@@ -40,7 +40,7 @@ BimaSarthi also supports regional languages  in future enhancement🌐, offers n
 ![GUI-Pixtral_OCR_DATAFLOW](https://github.com/user-attachments/assets/d423413a-9954-4dd9-ba91-e3b1c78c3f3c)
 ![WhatsApp Image 2024-09-21 at 00 02 24_7a33d654](https://github.com/user-attachments/assets/00c1e1af-6f1f-4020-976e-764456b01c18)
 
-Output in csv format as well :
+Output in csv format as well ( We have saved all 30 sample data in output.csv file present in MediMatchScan ) :
 
 ![image](https://github.com/user-attachments/assets/7eaae952-a1df-4084-be86-f601bfebe864)
 
