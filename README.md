@@ -5,6 +5,9 @@
 ## Overview
 *BimaSarthi* is an AI-driven solution designed to digitize handwritten medical forms by extracting medical diagnoses and streamlining insurance claim processes with recommendations. By enhancing Optical Character Recognition (OCR) 📝, active learning 🔄, and advanced AI models like GPT-3.5 🧠, BimaSarthi improves diagnosis extraction accuracy and adapts based on user feedback. It provides real-time suggestions and user assistance through an integrated chatbot 💬, simplifying interactions between patients and insurance providers for efficient and accurate claim submission.
 
+![WhatsApp Image 2024-09-20 at 23 54 21_58c63003](https://github.com/user-attachments/assets/786ce641-68aa-4484-a171-534518fe6f42)
+
+
 BimaSarthi also supports regional languages 🌐, offers natural language summarization of diagnoses 🧠, and includes an eligibility checker ✅ that verifies whether the diagnosis is covered by the user’s healthcare policy. This solution is designed with accessibility, automation, and user-centric features, creating a seamless and intelligent experience for users and insurance companies alike.
 
 ## Key Features 🔑
