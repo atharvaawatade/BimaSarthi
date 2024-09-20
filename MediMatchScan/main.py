@@ -1,3 +1,6 @@
+import os
+import sys
+def process_folder(folder_path):
 import base64
 import requests
 from io import BytesIO
@@ -93,5 +96,16 @@ def chat():
     response = chat_with_pixtral(base64_img, mrn_number, user_question)
     return jsonify({'response': response})
 
+def main():
+
+if len(sys.argv) != 2: print("Usage: python main.py <folder_path>")
+
+sys.exit(1)
+
+folder_path = sys.argv[1]
+
+process_folder(folder_path)
+
+if_name main()
 if __name__ == '__main__':
     app.run(debug=True)
