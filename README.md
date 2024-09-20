@@ -30,6 +30,9 @@ BimaSarthi also supports regional languages 🌐, offers natural language summar
   - Active Learning Loop (Real-Time Feedback)
   - Multilingual Model Support (Regional Language Support)
   - Libraries: requests, base64, io
+ 
+![GUI-Pixtral_OCR_DATAFLOW](https://github.com/user-attachments/assets/d423413a-9954-4dd9-ba91-e3b1c78c3f3c)
+
 
 ### Context-Aware OCR Tech Stack:
 - *Large Language Model Used*: Pixtral 12B (12 Billion Parameter Multimodal Model with a 400 Million Parameter Vision Encoder)
