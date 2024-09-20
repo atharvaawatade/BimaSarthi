@@ -9,6 +9,11 @@
 
 ![WhatsApp Image 2024-09-20 at 23 54 21_58c63003](https://github.com/user-attachments/assets/786ce641-68aa-4484-a171-534518fe6f42)
 
+Output in csv format as well :
+
+![image](https://github.com/user-attachments/assets/1f57f7e1-c843-414f-842c-6dc772fac70a)
+
+
 
 BimaSarthi also supports regional languages  in future enhancement🌐, offers natural language summarization of diagnoses 🧠, and includes an eligibility checker ✅ that verifies whether the diagnosis is covered by the user’s healthcare policy. This solution is designed with accessibility, automation, and user-centric features, creating a seamless and intelligent experience for users and insurance companies alike.
 
