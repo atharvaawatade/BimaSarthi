@@ -10,7 +10,7 @@
 ![WhatsApp Image 2024-09-20 at 23 54 21_58c63003](https://github.com/user-attachments/assets/786ce641-68aa-4484-a171-534518fe6f42)
 
 
-BimaSarthi also supports regional languages 🌐, offers natural language summarization of diagnoses 🧠, and includes an eligibility checker ✅ that verifies whether the diagnosis is covered by the user’s healthcare policy. This solution is designed with accessibility, automation, and user-centric features, creating a seamless and intelligent experience for users and insurance companies alike.
+BimaSarthi also supports regional languages  in future enhancement🌐, offers natural language summarization of diagnoses 🧠, and includes an eligibility checker ✅ that verifies whether the diagnosis is covered by the user’s healthcare policy. This solution is designed with accessibility, automation, and user-centric features, creating a seamless and intelligent experience for users and insurance companies alike.
 
 ## Key Features 🔑
 - *OCR-Based Medical Diagnosis Extraction* 📝: Leverages OCR technology combined with AI models to accurately extract diagnoses from handwritten medical forms.
@@ -37,6 +37,8 @@ BimaSarthi also supports regional languages 🌐, offers natural language summar
   - Libraries: requests, base64, io
  
 ![GUI-Pixtral_OCR_DATAFLOW](https://github.com/user-attachments/assets/d423413a-9954-4dd9-ba91-e3b1c78c3f3c)
+![WhatsApp Image 2024-09-21 at 00 02 24_7a33d654](https://github.com/user-attachments/assets/00c1e1af-6f1f-4020-976e-764456b01c18)
+
 
 
 ### Context-Aware OCR Tech Stack:
