@@ -1,7 +1,7 @@
 # BimaSarthi - AI-Powered Medical Diagnosis Extraction and Insurance and medical Assistance 🏥💡
 ![MediMatchBot 1](https://github.com/user-attachments/assets/e6307b89-002f-4ec1-bd1f-9fc0b3eef6ab)
 
-## Hosted MediMatchScan Sample : https://huggingface.co/spaces/akhil2808/MongoDBpixtralOCR
+## Hosted MediMatchScan Sample (this is just a sample hosting scanner with 90%+ accuracy, the full product code is not yet hosted with original UI) : https://huggingface.co/spaces/akhil2808/MongoDBpixtralOCR
 
 
 ## Overview
@@ -23,7 +23,6 @@ BimaSarthi also supports regional languages  in future enhancement🌐, offers n
 - *Database* 🗄: 
   - Vector Database (MongoDB)
 - *Backend* 🔧:
-  - Pytesseract (OCR)
   - Torch, Transformers (AI Models)
   - OpenAI GPT-3.5 (NLP)
   - Framework: Flask/FastAPI
