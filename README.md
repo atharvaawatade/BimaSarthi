@@ -1,7 +1,7 @@
 # BimaSarthi - AI-Powered Medical Diagnosis Extraction and Insurance and medical Assistance 🏥💡
 ![MediMatchBot 1](https://github.com/user-attachments/assets/e6307b89-002f-4ec1-bd1f-9fc0b3eef6ab)
 
-## Hosted MediMatchScan Sample (this is just a sample hosting scanner with 90%+ accuracy, the full product code is not yet hosted with original UI) : https://huggingface.co/spaces/akhil2808/MongoDBpixtralOCR
+## Hosted MediMatchScan Sample (The Link Below is the working backend OCR of the project as the full product with its original UI isn't hosted yet) : https://huggingface.co/spaces/akhil2808/MongoDBpixtralOCR
 
 
 ## Overview
