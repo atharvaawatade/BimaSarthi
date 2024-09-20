@@ -9,9 +9,6 @@
 
 ![WhatsApp Image 2024-09-20 at 23 54 21_58c63003](https://github.com/user-attachments/assets/786ce641-68aa-4484-a171-534518fe6f42)
 
-Output in csv format as well :
-
-![image](https://github.com/user-attachments/assets/1f57f7e1-c843-414f-842c-6dc772fac70a)
 
 
 
@@ -42,6 +39,10 @@ BimaSarthi also supports regional languages  in future enhancement🌐, offers n
  
 ![GUI-Pixtral_OCR_DATAFLOW](https://github.com/user-attachments/assets/d423413a-9954-4dd9-ba91-e3b1c78c3f3c)
 ![WhatsApp Image 2024-09-21 at 00 02 24_7a33d654](https://github.com/user-attachments/assets/00c1e1af-6f1f-4020-976e-764456b01c18)
+
+Output in csv format as well :
+
+![image](https://github.com/user-attachments/assets/7eaae952-a1df-4084-be86-f601bfebe864)
 
 
 
