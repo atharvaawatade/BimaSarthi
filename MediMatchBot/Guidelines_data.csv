@@ -1,0 +1,147 @@
+List of Health Insurance Regulatory Returns ,,,,,
+,,,,,
+Sno.,Form Number,Description,Freq.,Timeline,Applicability
+1,HIR-1-a,Details of product performance - Health Insurance ,Yearly, 60 days,General/Health Insurers
+2,HIR-1-b,Details of product performance - Personal Accident ,Yearly, 60 days,General/Health Insurers
+3,HIR-1-c,Details of product performance - Domestic Travel Insurance ,Yearly, 60 days,General/Health Insurers
+4,HIR-1-d,Details of product performance - Overseas Travel Insurance ,Yearly, 60 days,General/Health Insurers
+5,HIR-2,Details of product performance - Health Insurance Products of Life Insurers,Yearly, 60 days,Life Insurers only
+6,HIR-3,Details of performance of Health Insurance Riders of Life Insurers,Yearly, 60 days,Life Insurers only
+7,HIR-4-a,Details of performance of Add-ons - Health Insurance,Yearly, 60 days,General/Health Insurers
+8,HIR-4-b,Details of performance of Add-ons - Personal Accident,Yearly, 60 days,General/Health Insurers
+9,HIR-4-c,Details of performance of Add-ons - Domestic Travel Insurance,Yearly, 60 days,General/Health Insurers
+10,HIR-4-d,Details of performance of Add-ons - Overseas Travel Insurance,Yearly, 60 days,General/Health Insurers
+11,HIR-5,Details of performance of Combi-products ,Yearly, 60 days,Life/General/Health Insurers - Data to be submitted by Lead Insurers
+12,HIR-6-a-i,Details of State-wise Channel-wise Business - Health Insurance- Group Policies,Yearly, 60 days,Life/General/Health Insurers
+13,HIR-6-a-ii,Details of State-wise Channel-wise Business - Health Insurance- Individual Policies,Yearly, 60 days,Life/General/Health Insurers
+14,HIR-6-b-i,Details of State-wise Channel-wise Business - Personal Accident - Group Policies,Yearly, 60 days,General/Health Insurers
+15,HIR-6-b-ii,Details of State-wise Channel-wise Business - Personal Accident- Individual Policies,Yearly, 60 days,General/Health Insurers
+16,HIR-6-c-i,State-wise Channel-wise Number of Policies Issued and Gross Premium - Domestic Travel- Group policies,Yearly, 60 days,General/Health Insurers
+17,HIR-6-c-ii,State-wise Channel-wise Number of Policies Issued and Gross Premium - Domestic Travel- Individual Policies,Yearly, 60 days,General/Health Insurers
+18,HIR-6-d-i,State-wise Channel-wise Number of Policies Issued and Gross Premium - Overseas Travel- Group Policies,Yearly, 60 days,General/Health Insurers
+19,HIR-6-d-ii,State-wise Channel-wise Number of Policies Issued and Gross Premium - Overseas Travel- Individual Policies,Yearly, 60 days,General/Health Insurers
+24,HIR-7-a-i,State-wise details of new business and renewal business - Health Insurance- Group Family Floater,Yearly, 60 days,Life/General/Health Insurers
+25,HIR-7-a-ii,State-wise details of New Business & Renewal Business - Health Insurance- Group- Other than Family Floater,Yearly, 60 days,Life/General/Health Insurers
+26,HIR-7-a-iii,State-wise details of New Business & Renewal Business - Health Insurance- Individual Family Floater,Yearly, 60 days,Life/General/Health Insurers
+27,HIR-7-a-iv,State-wise details of New Business & Renewal Business - Health Insurance- Individual Other Than Family Non-Floater,Yearly, 60 days,Life/General/Health Insurers
+28,HIR-7-b-i,State-wise details of New Business & Renewal Business - Personal Accident Insurance- Group Insurance,Yearly, 60 days,General/Health Insurers only
+29,HIR-7-b-ii,State-wise details of New Business & Renewal Business - Personal Accident Insurance- Individual Insurance,Yearly, 60 days,General/Health Insurers only
+30,HIR-7-c-i,State-wise details of New Business & Renewal Business - Overseas Travel Insurance- Group Insurance,Yearly, 60 days,General/Health Insurers only
+31,HIR-7-c-ii,State-wise details of New Business & Renewal Business - Overseas Travel Insurance- Individual Insurance,Yearly, 60 days,General/Health Insurers only
+32,HIR-7-d-i,State-wise details of New Business & Renewal Business - Domestic Travel Insurance- Group Insurance,Yearly, 60 days,General/Health Insurers only
+33,HIR-7-d-ii,State-wise details of New Business & Renewal Business -  Domestic Travel Insurance- Individual Insurance,Yearly, 60 days,General/Health Insurers only
+34,HIR-8-a-i,Details of product-wise settlement of claims through TPAs- Health Insurance,Yearly, 60 days,Life/General/Health Insurers
+35,HIR-8-a-ii,Details of product-wise settlement of claims  through In-house settlement -Health Insurance,Yearly, 60 days,Life/General/Health Insurers
+36,HIR-8-b-i,Details of product-wise settlement of claims  through TPAs- Personal Accident,Yearly, 60 days,General/Health Insurers
+37,HIR-8-b-ii,Details of product-wise settlement of claims through In-house settlement -Personal Accident,Yearly, 60 days,General/Health Insurers
+38,HIR-8-c-i,Details of product-wise settlement of claims through TPAs- Oversaes Travel Insurance,Yearly, 60 days,General/Health Insurers
+39,HIR-8-c-ii,Details of product-wise settlement of claims through In-house settlement -Oversaes Travel Insurance,Yearly, 60 days,General/Health Insurers
+40,HIR-8-d-i,Details of product-wise settlement of claims through TPAs- Domestic Travel Insurance,Yearly, 60 days,General/Health Insurers
+41,HIR-8-d-ii,Details of product-wise settlement of claims through In-house settlement -Domestic Travel Insurance,Yearly, 60 days,General/Health Insurers
+42,HIR-9-a,Product wise claims performance and aging - Health Insurance ,Yearly, 60 days,Life/General/Health Insurers
+43,HIR-9-b,Product wise claims performance and aging - Personal Accident ,Yearly, 60 days,General/Health Insurers
+44,HIR-9-c,Product wise claims performance and aging - Domestic Travel ,Yearly, 60 days,General/Health Insurers
+45,HIR-9-d,Product wise claims performance and aging - Overseas  travel ,Yearly, 60 days,General/Health Insurers
+46,HIR-10-a-i,State-wise claims paid by mode of settlement of claims (Health) - Individual Policies,Yearly, 60 days,Life/General/Health Insurers
+47,HIR-10-a-ii,State-wise claims paid by mode of settlement of claims (Health) - Group Policies,Yearly, 60 days,Life/General/Health Insurers
+48,HIR-10-b-i,State-wise claims paid by mode of settlement of claims (PA) - Individual Policies,Yearly, 60 days,General/Health Insurers
+49,HIR-10-b-ii,State-wise claims paid by mode of settlement of claims (PA) - Group Policies,Yearly, 60 days,General/Health Insurers
+50,HIR-10-c-i,State-wise claims paid by mode of settlement of claims (Domestic Travel) - Individual Policies,Yearly, 60 days,General/Health Insurers
+51,HIR-10-c-ii,State-wise claims paid by mode of settlement of claims (Domestic Travel) - Group Policies,Yearly, 60 days,General/Health Insurers
+52,HIR-10-d-i,State-wise claims paid by mode of settlement of claims (Overses Travel) - Individual Policies,Yearly, 60 days,General/Health Insurers
+53,HIR-10-d-ii,State-wise claims paid by mode of settlement of claims (Overses Travel) - Group Policies,Yearly, 60 days,General/Health Insurers
+54,HIR-11-a-i,State-wise channel-wise details of claims paid - Group Health Policies,Yearly, 60 days,Life/General/Health Insurers
+55,HIR-11-a-ii,State-wise channel-wise details of claims paid  - Individual Health Policies,Yearly, 60 days,Life/General/Health Insurers
+56,HIR-11-b-i,State-wise channel-wise details of claims paid - Group PA Policies,Yearly, 60 days,General/Health Insurers
+57,HIR-11-b-ii,State-wise channel-wise details of claims paid  - Individual PA Policies,Yearly, 60 days,General/Health Insurers
+58,HIR-11-c,State-wise channel-wise details of claims paid  (Domestic Travel)(Group + Individual),Yearly, 60 days,General/Health Insurers
+59,HIR-11-d,State-wise channel-wise details of claims paid  (Overseas Travel)(Group + Individual),Yearly, 60 days,General/Health Insurers
+60,HIR-12-a-i,Details of large claim settled at state wise -through TPAs (Health),Yearly, 60 days,Life/General/Health Insurers
+61,HIR-12-a-ii,Details of large claim settled at state wise -through In-House Settlement (Health),Yearly, 60 days,Life/General/Health Insurers
+62,HIR-12-b-i,Details of large claim settled at state wise -through TPAs (PA),Yearly, 60 days,General/Health Insurers
+63,HIR-12-b-ii,Details of large claim settled at state wise -through In-House Settlement (PA),Yearly, 60 days,General/Health Insurers
+64,HIR-12-c-i,Details of large claim settled at state wise -through TPAs (Domestic Travel),Yearly, 60 days,General/Health Insurers
+65,HIR-12-c-ii,Details of large claim settled at state wise -through In-House Settlement (Domestic Travel),Yearly, 60 days,General/Health Insurers
+66,HIR-12-d-i,Details of large claim settled at state wise -through TPAs (Overses Travel),Yearly, 60 days,General/Health Insurers
+67,HIR-12-d-ii,Details of large claim settled at state wise -through In-House Settlement(Overses Travel),Yearly, 60 days,General/Health Insurers
+68,HIR-13 ,State-wise details on number of network providers,Yearly, 60 days,Life/General/Health Insurers
+69,HIR-14-a- F,Performance of Government sponsored  Scheme (Health) - for the half-year period ,Half-yearly,45 days,Life/General/Health Insurers
+70,HIR-14-a- U,Performance of Government sponsored  Scheme (Health) - upto the end of the period,Half-yearly,60 days,Life/General/Health Insurers
+71,HIR-14-b- F,Performance of Government sponsored  Scheme (PA) - for the half-year period ,Half-yearly,45 days,General/Health Insurers
+72,HIR-14-b- U,Performance of Government sponsored  Scheme (PA) - upto the end of the period,Half-yearly,60 days,General/Health Insurers
+73,HIR-15-a-i-F,Details of Claims Handled Directly by Insurers (Health)(Group Other Than Family Floater) -for the half-year period ,Half-yearly,45 days,Life/General/Health Insurers
+74,HIR-15-a-i-U,Details of Claims Handled Directly by Insurers (Health)(Group Other Than Family Floater)-upto the end of the period,Half-yearly,60 days,Life/General/Health Insurers
+75,HIR-15-a-ii-F,Details of Claims Handled Directly by Insurers (Health)(Group Family Floater ) - for the half-year period ,Half-yearly,45 days,Life/General/Health Insurers
+76,HIR-15-a-ii-U,Details of Claims Handled Directly by Insurers (Health)(Group Family Floater ) -upto the end of the period ,Half-yearly,60 days,Life/General/Health Insurers
+77,HIR-15-a-iii-F,Details of Claims Handled Directly by Insurers (Health)(Individual Family Floater) - for the half-year period ,Half-yearly,45 days,Life/General/Health Insurers
+78,HIR-15-a-iii-U,Details of Claims Handled Directly by Insurers (Health)(IndividualFamily Floater) -upto the end of the period ,Half-yearly,60 days,Life/General/Health Insurers
+79,HIR-15-a-iv-F,Details of Claims Handled Directly by Insurers (Health)(Individual Other Than Family Floater ) - for the half-year period ,Half-yearly,45 days,Life/General/Health Insurers
+80,HIR-15-a-iv-U,Details of Claims Handled Directly by Insurers (Health)(IndividualOther Than Family Floater ) -upto the end of the period ,Half-yearly,60 days,Life/General/Health Insurers
+81,HIR-15-b-i-F,Details of Claims Handled Directly by Insurers (PA)(Group Policies) - for the half-year period ,Half-yearly,45 days,General/Health Insurers
+82,HIR-15-b-i-U,Details of Claims Handled Directly by Insurers (PA)(Group Policies) -upto the end of the period ,Half-yearly,60 days,General/Health Insurers
+83,HIR-15-b-ii-F,Details of Claims Handled Directly by Insurers (PA)(Individual Policies) - for the half-year period ,Half-yearly,45 days,General/Health Insurers
+84,HIR-15-b-ii-U,Details of Claims Handled Directly by Insurers (PA)(Individual Policies) -upto the end of the period ,Half-yearly,60 days,General/Health Insurers
+85,HIR-15-c-i- F,Details of Claims Handled Directly by Insurers (Domestic Travel)(Group Policies) - for the half-year period ,Half-yearly,45 days,General/Health Insurers
+86,HIR-15-c-i- U,Details of Claims Handled Directly by Insurers (Domestic Travel)(Group Policies) -upto the end of the period ,Half-yearly,60 days,General/Health Insurers
+87,HIR-15-c-ii- F,Details of Claims Handled directly by insurers (Domestic Travel)(Individual Policies) -for the half-year period ,Half-yearly,45 days,General/Health Insurers
+88,HIR-15-c-ii- U,Details of Claims Handled directly by insurers (Domestic Travel)(Individual Policies) -upto the end of the period ,Half-yearly,60 days,General/Health Insurers
+89,HIR-15-d-i- F,Details of Claims Handled directly by insurers (Overseas Travel)(Group Policies) - for the half-year period ,Half-yearly,45 days,General/Health Insurers
+90,HIR-15-d-i- U,Details of Claims Handled directly by insurers (Overseas Travel)(Group Policies) -upto the end of the period ,Half-yearly,60 days,General/Health Insurers
+91,HIR-15-d-ii- F,Details of Claims Handled directly by insurers (Overseas Travel)(Individual Policies) - for the half-year period ,Half-yearly,45 days,General/Health Insurers
+92,HIR-15-d-ii- U,Details of Claims Handled directly by insurers (Overseas Travel)(Individual Policies) -upto the end of the period ,Half-yearly,60 days,General/Health Insurers
+93,HIR-16-a-i - F,TPA wise details of claims settled (Health)(Group Other Than Family Floater)- for the half-year period ,Half-yearly,45 days,Life/General/Health Insurers
+94,HIR-16-a-i - U,TPA wise details of claims settled (Health)(Group Other Than Family Floater) -upto the end of the period ,Half-yearly,60 days,Life/General/Health Insurers
+95,HIR-16-a-ii- F,TPA wise details of claims settled (Health)(Group Family Floater )- for the half-year period ,Half-yearly,45 days,Life/General/Health Insurers
+96,HIR-16-a-ii - U,TPA wise details of claims settled (Health)(Group Family Floater ) -upto the end of the period ,Half-yearly,60 days,Life/General/Health Insurers
+97,HIR-16-a-iii - F,TPA wise details of claims settled (Health)(IndividualFamily Floater)- for the half-year period ,Half-yearly,45 days,Life/General/Health Insurers
+98,HIR-16-a-iii - U,TPA wise details of claims settled (Health)(IndividualFamily Floater) -upto the end of the period ,Half-yearly,60 days,Life/General/Health Insurers
+99,HIR-16-a-iv- F,TPA wise details of claims settled (Health)(Individual Other Than Family Floater )- for the half-year period ,Half-yearly,45 days,Life/General/Health Insurers
+100,HIR-16-a-iv - U,TPA wise details of claims settled (Health)(Individual Other Than Family Floater ) -upto the end of the period ,Half-yearly,60 days,Life/General/Health Insurers
+101,HIR-16-b-i- F,TPA wise details of claims settled(PA)(Group Policies)- for the half-year period ,Half-yearly,45 days,General/Health Insurers
+102,HIR-16-b-i - U,TPA wise details of claims settled (PA)(Group Policies) -upto the end of the period ,Half-yearly,60 days,General/Health Insurers
+103,HIR-16-b-ii- F,TPA wise details of claims settleds (PA)(Individual Policies)- for the half-year period ,Half-yearly,45 days,General/Health Insurers
+104,HIR-16-b-ii - U,TPA wise details of claims settled(PA)(Individual Policies) -upto the end of the period ,Half-yearly,60 days,General/Health Insurers
+105,HIR-16-c-i - F,TPA wise details of claims settled (Domestic Travel)(Group Policies) - for the half-year period ,Half-yearly,45 days,General/Health Insurers
+106,HIR-16-c-i - U,TPA wise details of claims settled (Domestic Travel)(Group Policies) -upto the end of the period ,Half-yearly,60 days,General/Health Insurers
+107,HIR-16-c-ii - F,TPA wise details of claims settled (Domestic Travel)(Individual Policies) - for the half-year period ,Half-yearly,45 days,General/Health Insurers
+108,HIR-16-c-ii - U,TPA wise details of claims settled (Domestic Travel)(Individual Policies) -upto the end of the period ,Half-yearly,60 days,General/Health Insurers
+109,HIR-16-d-i- F,TPA wise details of claims settled (Overseas Travel)(Group Policies) - for the half-year period ,Half-yearly,45 days,General/Health Insurers
+110,HIR-16-d-i - U,TPA wise details of claims settled (Overseas Travel)(Group Policies) -upto the end of the period ,Half-yearly,60 days,General/Health Insurers
+111,HIR-16-d-ii - F,TPA wise details of claims settled (Overseas Travel)(Individual Policies) - for the half-year period ,Half-yearly,45 days,General/Health Insurers
+112,HIR-16-d-ii - U,TPA wise details of claims settled (Overseas Travel)(Individual Policies) -upto the end of the period ,Half-yearly,60 days,General/Health Insurers
+113,HIR-17-a-i -F,State-wise data on mode of issuing of policies  - Health Insurance - Individual Policies - for the half-year period ,Half-yearly,45 days,Life/General/Health Insurers
+114,HIR-17-a-i - U,State-wise data on mode of issuing of policies  - Health Insurance - Individual Policies -upto the end of the period ,Half-yearly,60 days,Life/General/Health Insurers
+115,HIR-17-a-ii- F,State-wise data on mode of issuing of policies  - Health Insurance - Group Policies - for the half-year period ,Half-yearly,45 days,Life/General/Health Insurers
+116,HIR-17-a-ii- U,State-wise data on mode of issuing of policies  - Health Insurance - Group Policies -upto the end of the period ,Half-yearly,60 days,Life/General/Health Insurers
+117,HIR-17-b-i- F,State-wise data on mode of issuing of policies  - Personal Accident Insurance - Individual Policies - for the half-year period ,Half-yearly,45 days,General/Health Insurers
+118,HIR-17-b-i- U,State-wise data on mode of issuing of policies  - Personal Accident Insurance - Individual Policies -upto the end of the period ,Half-yearly,60 days,General/Health Insurers
+119,HIR-17-b-ii-F,State-wise data on mode of issuing of policies  - Personal Accident Insurance - Group Policies - for the half-year period ,Half-yearly,45 days,General/Health Insurers
+120,HIR-17-b-ii-U,State-wise data on mode of issuing of policies  - Personal Accident Insurance - Group Policies -upto the end of the period ,Half-yearly,60 days,General/Health Insurers
+121,HIR-17-c-i -F,State-wise data on mode of issuing of policies  - Overseas Travel Insurance - Individual Policies - for the half-year period ,Half-yearly,45 days,General/Health Insurers
+122,HIR-17-c-i -U,State-wise data on mode of issuing of policies  - Overseas Travel Insurance - Individual Policies -upto the end of the period ,Half-yearly,60 days,General/Health Insurers
+123,HIR-17-c-ii-F,State-wise data on mode of issuing of policies  - Overseas Travel Insurance - Group Policies - for the half-year period ,Half-yearly,45 days,General/Health Insurers
+124,HIR-17-c-ii-U,State-wise data on mode of issuing of policies  - Overseas Travel Insurance - Group Policies -upto the end of the period ,Half-yearly,60 days,General/Health Insurers
+125,HIR-17-d-i-F,State-wise data on mode of issuing of policies  - Domestic Travel Insurance - Individual Policies - for the half-year period ,Half-yearly,45 days,General/Health Insurers
+126,HIR-17-d-i-U,State-wise data on mode of issuing of policies  - Domestic Travel Insurance Insurance - Individual Policies -upto the end of the period ,Half-yearly,60 days,General/Health Insurers
+127,HIR-17-d-ii-F,State-wise data on mode of issuing of policies  - Domestic Travel Insurance Insurance - Group Policies - for the half-year period ,Half-yearly,45 days,General/Health Insurers
+128,HIR-17-d-ii-U,State-wise data on mode of issuing of policies  - Domestic Travel Insurance Insurance - Group Policies -upto the end of the period ,Half-yearly,60 days,General/Health Insurers
+129,HIR-18-A,"Details of gross premium, no of persons covered and incurred claims - for the quarter",Quarterly,30 days,Life/General/Health Insurers
+130,HIR-18-B,"Details of gross premium, no of persons covered and incurred claims - upto the end of the period ",Quarterly,60 days,Life/General/Health Insurers
+131,HIR - 19-a -i- F,State-wise data on business & claims  (Health) - Group Policies (RSBY only) - for the quarter,Quarterly,30 days,General/Health Insurers
+132,HIR - 19-a- i- U,State-wise data on business & claims  (Health) - Group Policies (RSBY only) -upto the end of the period ,Quarterly,60 days,General/Health Insurers
+133,HIR - 19-a-ii - F,State-wise data on business & claims  (Health) - Group Policies (Other Govt Sponsored Schemes only) - for the quarter,Quarterly,30 days,Life/General/Health Insurers
+134,HIR - 19-a-ii- U,State-wise data on business & claims  (Health) - Group Policies (Other Govt Sponsored Schemes only) -upto the end of the period ,Quarterly,60 days,Life/General/Health Insurers
+135,HIR - 19-a -iii - F,State-wise data on business & claims  (Health) - Group Policies (Other than Govt Sponsored Schemes & RSBY) - for the quarter,Quarterly,30 days,Life/General/Health Insurers
+136,HIR - 19-a - iii - U,State-wise data on business & claims  (Health) - Group Policies (Other than Govt Sponsored Schemes & RSBY) -upto the end of the period ,Quarterly,60 days,Life/General/Health Insurers
+137,HIR - 19-a- iv- F,State-wise data on business & claims  (Health) - Individual Policies (Other than Govt Sponsored Schemes & RSBY) - for the quarter,Quarterly,30 days,Life/General/Health Insurers
+138,HIR - 19-a- iv- U,State-wise data on business & claims  (Health) - Individual Policies (Other than Govt Sponsored Schemes & RSBY) -upto the end of the period ,Quarterly,60 days,Life/General/Health Insurers
+139,HIR-19-b-i-F,State-wise data on business & claims  (PA) - Group Policies (PMSBY only) - for the quarter,Quarterly,30 days,General/Health Insurers
+140,HIR-19-b-i-U,State-wise data on business & claims  (PA) - Group Policies (PMSBY only) - upto the end of the period ,Quarterly,60 days,General/Health Insurers
+141,HIR-19-b-ii-F,State-wise data on business & claims  (PA) - Group Policies (Other than Govt Sponsored Schemes & PMSBY) - (for the quarter),Quarterly,30 days,General/Health Insurers
+142,HIR-19-b-ii-U,State-wise data on business & claims  (PA) - Group Policies (Other than Govt Sponsored Schemes & PMSBY) - upto the end of the period ,Quarterly,60 days,General/Health Insurers
+143,HIR-19-b-iii-F,State-wise data on business & claims  (PA) - Individual Policies - for the quarter,Quarterly,30 days,General/Health Insurers
+144,HIR-19-b-iii-U,State-wise data on business & claims  (PA) - Individual Policies  - upto the end of the period ,Quarterly,60 days,General/Health Insurers
+145,HIR-19-c-F,State-wise data on business & claims  (Domestic Travel) - Group plus Individual Business - for the quarter,Quarterly,30 days,General/Health Insurers
+146,HIR-19-c-U,State-wise data on business & claims  (Domestic Travel) - Group plus Individual Business - upto the end of the period ,Quarterly,60 days,General/Health Insurers
+147,HIR-19-d-F,State-wise data on business & claims  (Overseas Travel) - Group plus Individual Business - for the quarter,Quarterly,30 days,General/Health Insurers
+148,HIR-19-d-U,State-wise data on business & claims  (Overseas Travel) - Group plus Individual Business - upto the end of the period ,Quarterly,60 days,General/Health Insurers

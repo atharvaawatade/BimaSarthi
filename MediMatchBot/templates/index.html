@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Chatbot</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        #chat-container {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            overflow-y: scroll;
+            border: 1px solid #bdc3c7;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #chat-container p {
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+
+        #chat-container p strong {
+            color: #3498db;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            max-width: 600px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #start-chat {
+            background-color: #2ecc71;
+        }
+
+        #start-chat:hover {
+            background-color: #27ae60;
+        }
+
+        .input-container {
+            display: flex;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        #user-input {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>MediMatchBot</h1>
+    <input type="text" id="mrn" placeholder="Enter MRN">
+    <button id="start-chat" onclick="startChat()">Start Chat</button>
+    <div id="chat-container"></div>
+    <div class="input-container">
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        function startChat() {
+            $('#chat-container').empty();
+        }
+
+        function sendMessage() {
+            var mrn = $('#mrn').val();
+            var message = $('#user-input').val();
+            $('#chat-container').append('<p><strong>You:</strong> ' + message + '</p>');
+            $('#user-input').val('');
+
+            $.post('/chat', {mrn: mrn, message: message}, function(data) {
+                $('#chat-container').append('<p><strong>Bot:</strong> ' + data.response + '</p>');
+                $('#chat-container').scrollTop($('#chat-container')[0].scrollHeight);
+            });
+        }
+    </script>
+</body>
+</html>
