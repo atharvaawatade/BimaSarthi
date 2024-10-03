@@ -3,18 +3,18 @@ from dotenv import load_dotenv
 from pymongo import MongoClient
 from langchain_community.embeddings import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
-from langchain_openai import ChatOpenAI
-from langchain.chains import ConversationalRetrievalChain
-from langchain.memory import ConversationBufferMemory
 from flask import Flask, render_template, request, jsonify
 import PyPDF2
 import csv
 import random
+import requests
+from typing import List, Optional
+import re
 
 # Load environment variables
 load_dotenv()
 
-# Set up OpenAI API key
+# Set up OpenAI API key (for embeddings only)
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
 # Connect to MongoDB
@@ -54,6 +54,24 @@ except Exception as e:
     print(f"Error reading files: {e}")
     exit(1)
 
+class LLaMa3_2:
+    api_url: str = "http://localhost:11434/api/chat"
+    
+    def generate(self, prompt: str, stop: Optional[List[str]] = None) -> str:
+        messages = [{"role": "user", "content": prompt}]
+        body = {
+            "model": "llama3.2:latest",
+            "messages": messages,
+            "stream": False
+        }
+        if stop:
+            body["stop"] = stop
+        response = requests.post(self.api_url, json=body)
+        if response.status_code == 200:
+            return response.json()['message']['content']
+        else:
+            raise Exception(f"Error in LLaMa 3.2 API call: {response.text}")
+
 def get_user_data(mrn):
     user_data = collection.find_one({"mrn_number": mrn})
     if user_data:
@@ -66,17 +84,7 @@ def create_vector_db(user_data):
     vector_store = FAISS.from_texts([combined_data], embeddings)
     return vector_store
 
-def create_chatbot(vector_store):
-    memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
-    qa = ConversationalRetrievalChain.from_llm(
-        llm=ChatOpenAI(model_name="gpt-3.5-turbo"),
-        retriever=vector_store.as_retriever(),
-        memory=memory
-    )
-    return qa
-
 def get_insurance_eligibility_response():
-    # Randomly choose Yes or No for demonstration purposes
     is_eligible = random.choice([True, False])
     
     if is_eligible:
@@ -88,6 +96,21 @@ def get_insurance_eligibility_response():
     
     return response
 
+def translate_text(text, to_lang, from_lang='en'):
+    url = "https://microsoft-translator-text.p.rapidapi.com/translate"
+    querystring = {"to": to_lang, "api-version": "3.0", "from": from_lang, "profanityAction": "NoAction", "textType": "plain"}
+    payload = [{"Text": text}]
+    headers = {
+        "content-type": "application/json",
+        "X-RapidAPI-Key": "704d9bd019mshf7c899a687d57f2p1ceb2bjsnc6a8f1c59a6e",
+        "X-RapidAPI-Host": "microsoft-translator-text.p.rapidapi.com"
+    }
+    response = requests.post(url, json=payload, headers=headers, params=querystring)
+    if response.status_code == 200:
+        return response.json()[0]['translations'][0]['text']
+    else:
+        raise Exception(f"Translation error: {response.text}")
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -96,25 +119,55 @@ def index():
 def chat():
     mrn = request.form['mrn']
     user_input = request.form['message']
+    language = request.form.get('language', 'english').lower()
+
+    # Detect language change command
+    if user_input.lower() in ['marathi', 'hindi', 'tamil', 'english']:
+        language = user_input.lower()
+        return jsonify({"response": f"Switched to {language.capitalize()} language.", "language": language})
+
+    # Translate user input to English if not in English
+    if language != 'english':
+        user_input = translate_text(user_input, 'en', language)
 
     user_data = get_user_data(mrn)
     if user_data:
         vector_store = create_vector_db(user_data)
-        chatbot = create_chatbot(vector_store)
+        
+        relevant_context = vector_store.similarity_search(user_input, k=3)
+        context_text = "\n".join([doc.page_content for doc in relevant_context])
+        
+        full_prompt = f"""Context:
+{context_text}
+
+User data:
+{user_data}
+
+User question: {user_input}
+
+Please provide a concise and direct response. If asked about a diagnosis, state the diagnosis clearly. Offer 2-3 short, relevant suggestions if appropriate. Keep the entire response under 100 words. Do not use asterisks or any other markup for emphasis."""
+
+        llm = LLaMa3_2()
         
         if "eligible for insurance" in user_input.lower() or "am i eligible" in user_input.lower():
             response = get_insurance_eligibility_response()
-        elif "diagnosis" in user_input.lower():
-            question = f"Based on the user's medical records, what is their diagnosis? Please provide a detailed explanation."
-            chat_response = chatbot.invoke({"question": question})
-            response = chat_response['answer']
         else:
-            chat_response = chatbot.invoke({"question": user_input})
-            response = chat_response['answer']
+            try:
+                response = llm.generate(full_prompt)
+                response = re.sub(r'\*+', '', response)
+            except Exception as e:
+                response = f"An error occurred: {str(e)}"
 
-        return jsonify({"response": response})
+        # Translate response back to the user's preferred language if not English
+        if language != 'english':
+            response = translate_text(response, language)
+
+        return jsonify({"response": response, "language": language})
     else:
-        return jsonify({"response": "User not found. Please register first."})
+        response = "User not found. Please register first."
+        if language != 'english':
+            response = translate_text(response, language)
+        return jsonify({"response": response, "language": language})
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=3000)
