@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 from pymongo import MongoClient
-from langchain_community.embeddings import OpenAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
 from flask import Flask, render_template, request, jsonify
 import PyPDF2
@@ -96,9 +96,10 @@ def get_insurance_eligibility_response():
     
     return response
 
-def translate_text(text, to_lang, from_lang='en'):
+def translate_text(text, to_lang, from_lang='auto'):
     url = "https://microsoft-translator-text.p.rapidapi.com/translate"
-    querystring = {"to": to_lang, "api-version": "3.0", "from": from_lang, "profanityAction": "NoAction", "textType": "plain"}
+    querystring = {"to": to_lang, "api-version": "3.0", "profanityAction": "NoAction", "textType": "plain"}
+    
     payload = [{"Text": text}]
     headers = {
         "content-type": "application/json",
@@ -121,14 +122,28 @@ def chat():
     user_input = request.form['message']
     language = request.form.get('language', 'english').lower()
 
-    # Detect language change command
-    if user_input.lower() in ['marathi', 'hindi', 'tamil', 'english']:
-        language = user_input.lower()
-        return jsonify({"response": f"Switched to {language.capitalize()} language.", "language": language})
+    # Map language names to language codes
+    language_codes = {
+        'english': 'en',
+        'hindi': 'hi',
+        'bengali': 'bn',
+        'marathi': 'mr',
+        'telugu': 'te',
+        'tamil': 'ta',
+        'gujarati': 'gu',
+        'urdu': 'ur',
+        'kannada': 'kn',
+        'odia': 'or',
+        'malayalam': 'ml',
+        'punjabi': 'pa',
+        'assamese': 'as'
+    }
 
-    # Translate user input to English if not in English
-    if language != 'english':
-        user_input = translate_text(user_input, 'en', language)
+    to_lang = language_codes.get(language, 'en')
+
+    # Translate user input to English if not already in English
+    if to_lang != 'en':
+        user_input = translate_text(user_input, 'en', 'auto')
 
     user_data = get_user_data(mrn)
     if user_data:
@@ -159,14 +174,14 @@ Please provide a concise and direct response. If asked about a diagnosis, state 
                 response = f"An error occurred: {str(e)}"
 
         # Translate response back to the user's preferred language if not English
-        if language != 'english':
-            response = translate_text(response, language)
+        if to_lang != 'en':
+            response = translate_text(response, to_lang, 'en')
 
         return jsonify({"response": response, "language": language})
     else:
         response = "User not found. Please register first."
-        if language != 'english':
-            response = translate_text(response, language)
+        if to_lang != 'en':
+            response = translate_text(response, to_lang, 'en')
         return jsonify({"response": response, "language": language})
 
 if __name__ == "__main__":
