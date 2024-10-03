@@ -1,115 +1,129 @@
 import os
-from dotenv import load_dotenv
-from pymongo import MongoClient
-from langchain_community.embeddings import OpenAIEmbeddings
-from langchain_community.vectorstores import FAISS
-from flask import Flask, render_template, request, jsonify
-import PyPDF2
-import csv
-import random
+import sys
+def process_folder(folder_path):
+import base64
 import requests
-from typing import List, Optional
-import re
+import json
+from io import BytesIO
+from PIL import Image
+from flask import Flask, request, jsonify, render_template
+from pymongo import MongoClient
+import time
+import uuid
+import csv
+import os
+from openai import OpenAI
+from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
 
-# Set up OpenAI API key (for embeddings only)
-os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
-
-# Connect to MongoDB
-try:
-    client = MongoClient(os.getenv("MONGODB_URI"))
-    db = client["bajaj"]
-    collection = db["client"]
-except Exception as e:
-    print(f"Error connecting to MongoDB: {e}")
-    exit(1)
-
 app = Flask(__name__)
 
-# Load policy and regulation data
-try:
-    guidelines_path = os.path.join(os.path.dirname(__file__), 'Guidelines_data.csv')
-    with open(guidelines_path, "r") as f:
-        policy_data = f.read()
-    
-    wellness_path = os.path.join(os.path.dirname(__file__), 'Guidelines on Wellness and Preventive Features.pdf')
-    with open(wellness_path, "rb") as f:
-        pdf_reader = PyPDF2.PdfReader(f)
-        regulation_data = ""
-        for page in pdf_reader.pages:
-            regulation_data += page.extract_text()
-    
-    # Load the new terms and conditions data
-    terms_path = os.path.join(os.path.dirname(__file__), 'expanded_health_insurance_terms_conditions.csv')
-    with open(terms_path, "r") as f:
-        csv_reader = csv.DictReader(f)
-        terms_data = next(csv_reader)['Insurance Regulations and Details']
+# MongoDB setup
+mongo_client = MongoClient("mongodb+srv://atharva2021:123@cluster0.so5reec.mongodb.net/")
+db = mongo_client['bajaj']
+collection = db['client']
 
-except FileNotFoundError as e:
-    print(f"Error: File not found - {e}")
-    exit(1)
-except Exception as e:
-    print(f"Error reading files: {e}")
-    exit(1)
+# OpenAI API setup
+client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
-class LLaMa3_2:
-    api_url: str = "http://localhost:11434/api/chat"
+# Function to encode the image to base64
+def encode_image(img):
+    buffered = BytesIO()
+    img.save(buffered, format="PNG")
+    encoded_string = base64.b64encode(buffered.getvalue()).decode("utf-8")
+    return encoded_string
+
+# Function to save data to CSV
+def save_to_csv(filename, diagnosis):
+    csv_file = 'output.csv'
+    file_exists = os.path.isfile(csv_file)
     
-    def generate(self, prompt: str, stop: Optional[List[str]] = None) -> str:
-        messages = [{"role": "user", "content": prompt}]
-        body = {
-            "model": "llama3.2:latest",
-            "messages": messages,
-            "stream": False
-        }
-        if stop:
-            body["stop"] = stop
-        response = requests.post(self.api_url, json=body)
-        if response.status_code == 200:
-            return response.json()['message']['content']
-        else:
-            raise Exception(f"Error in LLaMa 3.2 API call: {response.text}")
+    with open(csv_file, 'a', newline='') as file:
+        writer = csv.writer(file)
+        if not file_exists:
+            writer.writerow(['file name', 'Provisional diagnosis'])
+        writer.writerow([filename, diagnosis])
 
-def get_user_data(mrn):
-    user_data = collection.find_one({"mrn_number": mrn})
-    if user_data:
-        return user_data.get("ocr_result", "")
-    return None
+# Function to extract diagnosis using GPT-3.5-turbo
+def extract_diagnosis_gpt(pixtral_response):
+    try:
+        completion = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "You are a medical assistant. Extract the provisional diagnosis from the following text. Provide only the diagnosis without any additional text."},
+                {"role": "user", "content": f"Extract the provisional diagnosis from this text: {pixtral_response}"}
+            ]
+        )
+        diagnosis = completion.choices[0].message.content.strip()
+        return diagnosis if diagnosis else "No provisional diagnosis found"
+    except Exception as e:
+        print(f"Error in GPT extraction: {str(e)}")
+        return "Error in diagnosis extraction"
 
-def create_vector_db(user_data):
-    combined_data = f"{user_data}\n\n{policy_data}\n\n{regulation_data}\n\n{terms_data}"
-    embeddings = OpenAIEmbeddings()
-    vector_store = FAISS.from_texts([combined_data], embeddings)
-    return vector_store
+# Chat function with Pixtral and MongoDB saving
+def chat_with_pixtral(base64_img, mrn_number, user_question, filename):
+    api = "https://api.hyperbolic.xyz/v1/chat/completions"
+    api_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyZzMyNzAyNEBnbWFpbC5jb20ifQ._frFve-BYZdb0Qo6FIj6xcDcxpY-6QlC2O-ToQxBjkc"
 
-def get_insurance_eligibility_response():
-    is_eligible = random.choice([True, False])
-    
-    if is_eligible:
-        response = "Yes, you are eligible for insurance. "
-    else:
-        response = "Based on the information provided, you may not be eligible for insurance at this time. However, eligibility criteria can vary. "
-    
-    response += "For more detailed information and to explore your options, please visit: https://www.bajajfinserv.in/"
-    
-    return response
-
-def translate_text(text, to_lang, from_lang='en'):
-    url = "https://microsoft-translator-text.p.rapidapi.com/translate"
-    querystring = {"to": to_lang, "api-version": "3.0", "from": from_lang, "profanityAction": "NoAction", "textType": "plain"}
-    payload = [{"Text": text}]
     headers = {
-        "content-type": "application/json",
-        "X-RapidAPI-Key": "704d9bd019mshf7c899a687d57f2p1ceb2bjsnc6a8f1c59a6e",
-        "X-RapidAPI-Host": "microsoft-translator-text.p.rapidapi.com"
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {api_key}",
     }
-    response = requests.post(url, json=payload, headers=headers, params=querystring)
+
+    payload = {
+        "messages": [
+            {
+                "role": "user",
+                "content": [
+                    {"type": "text", "text": user_question},  
+                    {
+                        "type": "image_url",
+                        "image_url": {"url": f"data:image/jpeg;base64,{base64_img}"},
+                    },
+                ],
+            }
+        ],
+        "model": "mistralai/Pixtral-12B-2409",
+        "max_tokens": 2048,
+        "temperature": 0.7,
+        "top_p": 0.9,
+    }
+
+    response = requests.post(api, headers=headers, json=payload)
+
     if response.status_code == 200:
-        return response.json()[0]['translations'][0]['text']
+        response_data = response.json()
+        if 'choices' in response_data:
+            assistant_response = response_data['choices'][0]['message']['content']
+            provisional_diagnosis = extract_diagnosis_gpt(assistant_response)
+        else:
+            assistant_response = "Response format is incorrect"
+            provisional_diagnosis = "Response format is incorrect"
     else:
-        raise Exception(f"Translation error: {response.text}")
+        assistant_response = f"API request failed: {response.status_code} - {response.text}"
+        provisional_diagnosis = "API request failed"
+
+    # Generate a unique ID for the request
+    unique_id = str(uuid.uuid4())
+
+    # Save the result to MongoDB with the specified format
+    document = {
+        'mrn_number': mrn_number,
+        'ocr_result': assistant_response,
+        'provisional_diagnosis': provisional_diagnosis,
+        'unique_id': unique_id,
+        'got_mode': "plain texts OCR",
+        'timestamp': time.time()
+    }
+
+    collection.insert_one(document)
+
+    # Save to CSV
+    save_to_csv(filename, provisional_diagnosis)
+
+    return assistant_response, provisional_diagnosis
 
 @app.route('/')
 def index():
@@ -117,57 +131,22 @@ def index():
 
 @app.route('/chat', methods=['POST'])
 def chat():
-    mrn = request.form['mrn']
-    user_input = request.form['message']
-    language = request.form.get('language', 'english').lower()
+    image = request.files['image']
+    mrn_number = request.form['mrn_number']
+    user_question = request.form['user_question']
+    filename = image.filename
 
-    # Detect language change command
-    if user_input.lower() in ['marathi', 'hindi', 'tamil', 'english']:
-        language = user_input.lower()
-        return jsonify({"response": f"Switched to {language.capitalize()} language.", "language": language})
+    img = Image.open(image)
+    base64_img = encode_image(img)
 
-    # Translate user input to English if not in English
-    if language != 'english':
-        user_input = translate_text(user_input, 'en', language)
+    response, diagnosis = chat_with_pixtral(base64_img, mrn_number, user_question, filename)
+    return jsonify({'response': response, 'diagnosis': diagnosis})
 
-    user_data = get_user_data(mrn)
-    if user_data:
-        vector_store = create_vector_db(user_data)
-        
-        relevant_context = vector_store.similarity_search(user_input, k=3)
-        context_text = "\n".join([doc.page_content for doc in relevant_context])
-        
-        full_prompt = f"""Context:
-{context_text}
-
-User data:
-{user_data}
-
-User question: {user_input}
-
-Please provide a concise and direct response. If asked about a diagnosis, state the diagnosis clearly. Offer 2-3 short, relevant suggestions if appropriate. Keep the entire response under 100 words. Do not use asterisks or any other markup for emphasis."""
-
-        llm = LLaMa3_2()
-        
-        if "eligible for insurance" in user_input.lower() or "am i eligible" in user_input.lower():
-            response = get_insurance_eligibility_response()
-        else:
-            try:
-                response = llm.generate(full_prompt)
-                response = re.sub(r'\*+', '', response)
-            except Exception as e:
-                response = f"An error occurred: {str(e)}"
-
-        # Translate response back to the user's preferred language if not English
-        if language != 'english':
-            response = translate_text(response, language)
-
-        return jsonify({"response": response, "language": language})
-    else:
-        response = "User not found. Please register first."
-        if language != 'english':
-            response = translate_text(response, language)
-        return jsonify({"response": response, "language": language})
-
-if __name__ == "__main__":
-    app.run(debug=True, port=3000)
+if __name__ == '__main__':
+    app.run(debug=True)
+def main():
+if len(sys.argv) != 2: print("Usage: python main.py <folder_path>")
+sys.exit(1)
+folder_path = sys.argv[1]
+process_folder(folder_path)
+if_name main()
