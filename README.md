@@ -1,36 +1,65 @@
 # BimaSarthi - AI-Powered Medical Diagnosis Extraction and Insurance and medical Assistance 🏥💡
 # Hosting Link : https://bima-sarthi-home.vercel.app/
-## Hosted MediMatchScan Sample backend : https://huggingface.co/spaces/akhil2808/MongoDBpixtralOCR
+# Testing API : https://medi-match-scan.vercel.app/api/test
+
+This example demonstrates how to send an image to the hosted API using Python's `requests` library.
+
+```python
+import requests
+
+# Define the hosted API endpoint
+url = "https://medi-match-scan.vercel.app/api/test"
+
+# Path to the image you want to test with
+image_path = "C:/Users/Asus/Desktop/apitestbimasarthi/image/sample_1.png"
+
+# Open the image file in binary mode and send a POST request
+with open(image_path, "rb") as image_file:
+    files = {"image": image_file}
+    response = requests.post(url, files=files)
+
+# Print the response
+try:
+    print("Response:", response.json())  # Prints JSON response if available
+except ValueError:
+    print("Response is not in JSON format. Here is the raw response:")
+    print(response.text)  # Print the raw response text if JSON decoding fails
+```
+
+![image](https://github.com/user-attachments/assets/c38eba1b-abb4-4bc2-ada7-8824663f61f7)
+![image](https://github.com/user-attachments/assets/f2d51282-cce1-4331-9b32-9e840703a705)
+
+
 
 ![MediMatchBot 1](https://github.com/user-attachments/assets/e6307b89-002f-4ec1-bd1f-9fc0b3eef6ab)
 
 
 ## Overview
-*BimaSarthi* is an AI-driven solution designed to digitize handwritten medical forms by extracting medical diagnoses and streamlining insurance claim processes with recommendations. By enhancing Optical Character Recognition (OCR) 📝, active learning 🔄, and advanced AI models like GPT-3.5 🧠, BimaSarthi improves diagnosis extraction accuracy and adapts based on user feedback. It provides real-time suggestions and user assistance through an integrated chatbot 💬, simplifying interactions between patients and insurance providers for efficient and accurate claim submission.
-
-![WhatsApp Image 2024-09-20 at 23 54 21_58c63003](https://github.com/user-attachments/assets/786ce641-68aa-4484-a171-534518fe6f42)
+*BimaSarthi* is an AI-driven solution designed to digitize handwritten medical forms by extracting medical diagnoses specifically "provisional diagnosis"  by creating an effective Optical Character Recognition (OCR) 📝 platform based on active learning 🔄, advanced language and vision models 🧠. It also provides user assistance through an integrated chatbot 💬, simplifying interactions between patients and insurance providers for efficient and accurate claim submission.
 
 
 
 
-BimaSarthi also supports regional languages  in future enhancement🌐, offers natural language summarization of diagnoses 🧠, and includes an eligibility checker ✅ that verifies whether the diagnosis is covered by the user’s healthcare policy. This solution is designed with accessibility, automation, and user-centric features, creating a seamless and intelligent experience for users and insurance companies alike.
+BimaSarthi also supports regional languages  in future enhancement🌐, offers natural language summarization of diagnoses 🧠, and includes an eligibility checker ✅ that verifies whether Bajaj Finserv's healthcare policy covers the diagnosis. This solution is designed with accessibility, automation, and user-centric features, creating a seamless and intelligent experience for users and insurance companies alike.
 
 ## Key Features 🔑
-- *OCR-Based Medical Diagnosis Extraction* 📝: Leverages OCR technology combined with AI models to accurately extract diagnoses from handwritten medical forms.
-- *Real-Time Feedback Loop* 🔄: The system learns from user edits, continuously improving OCR accuracy with active learning.
-- *Natural Language Summarization* 🧠: Simplifies complex medical diagnoses into layman's terms using GPT-3.5, improving user understanding.
+- *OCR-Based Medical Diagnosis Extraction* 📝: Leverages open-source and localised OCR technology combined with LLM models to accurately extract diagnoses from handwritten medical forms.
+- *Transparent Approach*: The entire system has been created using open-source and free resources.
+- *Production Friendly: The entire system has been made by taking into consideration the computational costs it takes to deploy such a system.
+- *Natural Language Summarization* 🧠: Simplifies complex medical diagnoses into layman's terms using Llama-3.2-3B-Instruct, improving user understanding.
 - *Insurance Eligibility Checker* ✅: Automatically verifies if the extracted diagnosis is covered under the user’s healthcare plan, streamlining the claim process.
-- *Chatbot Integration* 💬: Provides real-time assistance and recommendations related to healthcare insurance and diagnosis.
+- *Chatbot Integration* 💬: Provides  assistance and recommendations related to healthcare insurance and diagnosis.
 
 ## Tech Stack 🛠
 - *Database* 🗄: 
-  - Vector Database (MongoDB)
+  - Vector Database(FAISS)
+  - Database (MongoDB)
 - *Backend* 🔧:
-  - Torch, Transformers (AI Models)
-  - OpenAI GPT-3.5 (NLP)
-  - Framework: Flask/FastAPI
+  - Torch, Transformers, Vision Model(Florence-2-Large-Finetuned)
+  - Llama-3.2-3B-Instruct (NLP LLM)
+  - Framework: Flask,FastAPI,Uvicorn,Ngrok
 - *Frontend* 💻:
-  - HTML/CSS, JavaScript
+  - HTML/CSS, JavaScript,Typescript
   - Gradio (Interactive UI)
 - *Other Tools* 🧰:
   - Pillow (Image Processing)
@@ -38,27 +67,20 @@ BimaSarthi also supports regional languages  in future enhancement🌐, offers n
   - Multilingual Model Support (Regional Language Support)
   - Libraries: requests, base64, io
  
-![GUI-Pixtral_OCR_DATAFLOW](https://github.com/user-attachments/assets/d423413a-9954-4dd9-ba91-e3b1c78c3f3c)
+## OCR detection model : microsoft/Florence-2-large-ft
+
 ![WhatsApp Image 2024-09-21 at 00 02 24_7a33d654](https://github.com/user-attachments/assets/00c1e1af-6f1f-4020-976e-764456b01c18)
 
 Output in csv format as well ( We have saved all 30 sample data in output.csv file present in MediMatchScan ) :
 
 ![image](https://github.com/user-attachments/assets/7eaae952-a1df-4084-be86-f601bfebe864)
 
-
-
-### Context-Aware OCR Tech Stack:
-- *Large Language Model Used*: Pixtral 12B (12 Billion Parameter Multimodal Model with a 400 Million Parameter Vision Encoder)
-- *API*: Hyperbolic v1 Chat Completion API
-
 ## How BimaSarthi Works 🏥
 1. *Upload Medical Form* 📄: Users upload scanned images of handwritten medical forms.
 2. *OCR Extraction* 📝: The system uses OCR to extract medical diagnoses from the uploaded form.
-3. *Real-Time Feedback* 🔄: Users can review and edit the extracted data, with the system learning from corrections for improved accuracy.
-4. *Natural Language Summarization* 🧠: Extracted diagnoses are simplified into layman’s terms using GPT-3.5 for better user understanding.
-5. *Insurance Eligibility Check & Recommendations* ✅: The system cross-references the diagnosis with the user’s healthcare plan to check claim eligibility and provide recommendations.
-6. *Data Submission* 📥: The diagnosis data, along with metadata (e.g., MRN and date), is stored in a vector database for future reference and chatbot interactions.
-7. *End-to-End Solution* 🔄: From form scanning to claim processing, BimaSarthi offers a seamless, fully integrated experience.
+3. *Insurance Eligibility Check & Recommendations* ✅: The system cross-references the diagnosis with the user’s healthcare plan to check claim eligibility and provide recommendations.
+4. *Data Submission* 📥: The diagnosis data, along with metadata (e.g., MRN and date), is stored in a vector database for future reference and chatbot interactions.
+5. *End-to-End Solution* 🔄: From form scanning to claim processing, BimaSarthi offers a seamless, fully integrated experience.
 
 ## Future Enhancements 🔮
 - *AI-Powered Fraud Detection* 🚨: Implement machine learning models to detect fraudulent claims by identifying anomalies in diagnosis and insurance data.
@@ -76,5 +98,4 @@ Output in csv format as well ( We have saved all 30 sample data in output.csv fi
 BimaSarthi successfully addresses all key aspects of the problem statement, including:
 1. *Accurate Diagnosis Extraction*: Uses advanced OCR and deep learning models for accurate handwritten diagnosis extraction.
 2. *User-Friendly Output and Editing*: Provides real-time editing and feedback options to enhance accuracy and user interaction.
-3. *Simplified Diagnosis Explanation*: GPT-3.5 delivers a simplified summary of the medical diagnosis, aiding in user comprehension.
-4. *Insurance Eligibility Verification*: The system verifies claim eligibility by cross-referencing the diagnosis with the user's healthcare plan.
+3. *Insurance Eligibility Verification*: The system verifies claim eligibility by cross-referencing the diagnosis with the user's healthcare plan.
