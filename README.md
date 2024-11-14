@@ -2,7 +2,7 @@
 # Hosting Link : https://bima-sarthi-home.vercel.app/
 # Testing API : https://medi-match-scan.vercel.app/api/test
 
-This example demonstrates how to send an image to the hosted API using Python's `requests` library.
+This example demonstrates sending an image to the hosted API using Python's `requests` library.
 
 ```python
 import requests
